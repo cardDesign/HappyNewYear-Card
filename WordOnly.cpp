@@ -24,7 +24,7 @@ void DrawCircle(float radiusX, float radiusY, int posX,int posY)
 	for(int i=0;i<360;i++)
 	{
 	  float theta=i*3.142/180;
-	  glVertex2f(posX+0.1*cos(theta)*radiusX,posY+0.1*sin(theta)*radiusY);          //half230, 230, 250
+	  glVertex2f(posX+0.1*cos(theta)*radiusX,posY+0.1*sin(theta)*radiusY);          
 	}
 	glEnd();
 }
