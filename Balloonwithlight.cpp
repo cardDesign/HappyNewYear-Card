@@ -99,7 +99,7 @@ void display(void)
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(0.1,posY+0.4,0.0);
+    glTranslatef(0.1,posY+0.7,0.0);
     balloon(0.8,0.4 ,0.1);
     glPopMatrix();
 
