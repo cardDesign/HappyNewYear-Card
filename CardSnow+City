@@ -5,6 +5,7 @@
 
 const int font1=(int)GLUT_BITMAP_TIMES_ROMAN_24;
 const int font2=(int)GLUT_BITMAP_TIMES_ROMAN_10;
+int w,h;
 double refreshMills = 100;
 double cameraX = 0.0;
 double cameraY = 0.0;
@@ -256,16 +257,16 @@ void text(void)
     renderBitmapString(500,180,(void *)font2,"achievements and a lot of new");
     renderBitmapString(500,160,(void *)font2,"inspirations on your life");
 }
-void reshape1(int width,int height)
+void setPerspectiveProjection()
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(45.0f,width /height, 1.0f, 100.0f);
+    gluPerspective(45.0f,w /h, 1.0f, 100.0f);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity() ;
 }
 
-void reshape2(int w,int h)
+void setOrthographicProjection()
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -274,22 +275,22 @@ void reshape2(int w,int h)
     glLoadIdentity();
 }
 
-void resize(int w,int h)
+void resize(int width,int height)
 {
-     if (h == 0) h = 1;
-    glViewport(0, 0, w, h);
+    w=width;
+    h=height;
+     if (height == 0) height = 1;
+    glViewport(0, 0, width, height);
 }
 void display()
 {
-    double w = glutGet( GLUT_WINDOW_WIDTH );
-    double h = glutGet( GLUT_WINDOW_HEIGHT );
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    reshape1(w,h);
+    setPerspectiveProjection();
     setCamera();
+    city();
     background();
     drawSnow();
-    city();
     ///balloon
     glPushMatrix();
         glTranslatef(-2.0, posY+0.6, -2.0);
@@ -310,8 +311,7 @@ void display()
         glTranslatef(0.1, posY+0.7, -2.0);
         balloon(0.8, 0.4 ,0.1);
     glPopMatrix();
-
-    reshape2(w,h);
+    setOrthographicProjection();
     text();
     glutSwapBuffers();
 }
