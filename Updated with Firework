@@ -347,7 +347,7 @@ void resize(int w,int h)
         glViewport(0, 0, w, h);
 }
 
-void reshape (int w, int h)
+void reshape3 (int w, int h)
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
@@ -408,7 +408,7 @@ void display()
 
     else if(ptcl == 2)
     {
-        reshape(w,h);
+        reshape3(w,h);
         firework();
     }
 
