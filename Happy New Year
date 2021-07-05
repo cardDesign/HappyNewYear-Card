@@ -4,7 +4,6 @@
 #include <math.h>
 
 #define MaxSnowParticles 500
-#define M_PI (3.1415926535897932384626433832795)
 #define MAX_FIREWORK_POINTS 1750
 
 const int font1=(int)GLUT_BITMAP_TIMES_ROMAN_24;
