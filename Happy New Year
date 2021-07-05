@@ -485,14 +485,6 @@ void keyboard(unsigned char key, int x, int y)
             if(ptcl!=2) ptcl = 2;
             else ptcl = 0;
             break;
-        //Zoom in
-        case 'o':
-            zoom += 0.5;
-            break;
-        //Zoom out
-        case 'u':
-            zoom -= 0.5;
-            break;
         //Move up
         case 'i':
             translateY += 0.5;
@@ -517,6 +509,23 @@ void keyboard(unsigned char key, int x, int y)
     }
 }
 
+//Change stars color
+void mouse(int button, int state, int x, int y)
+{
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN)
+    {
+        //Zoom in
+        zoom += 0.5;
+        glutPostRedisplay();
+    }
+    else if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN)
+    {
+        //Zoom out
+        zoom -= 0.5;
+        glutPostRedisplay();
+    }
+}
+
 void idle()
 {
     glutPostRedisplay();
@@ -536,8 +545,8 @@ int main(int argc,char**argv)
     glutIdleFunc(idle);
     glutSpecialFunc(keyboard_arrow);
     glutKeyboardFunc(keyboard);
+    glutMouseFunc(mouse);
     glutTimerFunc(200,timer,0);
     glutMainLoop();
     return 0;
 }
-
