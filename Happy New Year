@@ -349,10 +349,7 @@ void reshape3(int w, int h)
 {
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    if (w <= h)
-        glOrtho(-1.0, 1.0, -1.0*(GLfloat)h/(GLfloat)w, 1.0*(GLfloat)h/(GLfloat)w, -1.0, 1.0);
-    else
-        glOrtho(-1.0*(GLfloat)w/(GLfloat)h, 1.0*(GLfloat)w/(GLfloat)h, -1.0, 1.0, -1.0, 1.0);
+    glOrtho(-1.0*(GLfloat)w/(GLfloat)h, 1.0*(GLfloat)w/(GLfloat)h, -1.0, 1.0, -1.0, 1.0);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity() ;
 }
@@ -543,3 +540,4 @@ int main(int argc,char**argv)
     glutMainLoop();
     return 0;
 }
+
