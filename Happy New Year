@@ -21,13 +21,11 @@ float posY = 0.4;
 float velocity = 0.0;
 
 int numPoints;
-GLfloat firework_curx, firework_cury, firework_curz;
+GLfloat firework_curx, firework_cury;
 GLfloat x[MAX_FIREWORK_POINTS];
 GLfloat y[MAX_FIREWORK_POINTS];
-GLfloat z[MAX_FIREWORK_POINTS];
 GLfloat xacc[MAX_FIREWORK_POINTS];
 GLfloat yacc[MAX_FIREWORK_POINTS];
-GLfloat zacc[MAX_FIREWORK_POINTS];
 GLfloat red, green, blue;
 int step;
 int length;
@@ -485,12 +483,12 @@ void keyboard(unsigned char key, int x, int y)
             if(ptcl!=2) ptcl = 2;
             else ptcl = 0;
             break;
-        //Move up
-        case 'i':
-            translateY += 0.5;
-            break;
         //Move down
         case 'k':
+            translateY += 0.5;
+            break;
+        //Move up
+        case 'i':
             translateY -= 0.5;
             break;
         //Move right
@@ -550,3 +548,4 @@ int main(int argc,char**argv)
     glutMainLoop();
     return 0;
 }
+
